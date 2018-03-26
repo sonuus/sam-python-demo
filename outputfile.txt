@@ -1,0 +1,1 @@
+{"errorMessage": "free variable 'dynamo' referenced before assignment in enclosing scope", "errorType": "NameError", "stackTrace": [["/var/task/LambdaFunctionOverHttps.py", 33, "handler", "return operations[operation] (event.get('payload'))"], ["/var/task/LambdaFunctionOverHttps.py", 27, "<lambda>", "'list': lambda x: dynamo.scan(**x),"]]}

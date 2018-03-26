@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  CloudTrailEventProcessing:
+    Properties:
+      CodeUri: s3://tutux-artifact-bucket/60274660ccc7bf0ea64dfe8944b3259d
+      Events:
+        PhotoUpload:
+          Properties:
+            Bucket: arn:aws:s3:::tutuxpresigned/*
+            Events: s3:ObjectCreated:*
+          Type: S3
+      Handler: bucket-object-created.handler
+      MemorySize: 1024
+      Policies:
+        Statement:
+        - Action: s3:GetObject
+          Effect: Allow
+          Resource: arn:aws:s3:::tutuxpresigned/*
+      Runtime: Python3.6
+      Timeout: 10
+    Type: AWS::Serverless::Function
+    Transform: AWS::Serverless-2016-10-31
