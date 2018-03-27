@@ -12,8 +12,8 @@ def handler(event, context):
         - payload: a parameter to pass to the operation being performed
 
     '''
-    print('Received event ' + json.dumps(event,indent =2))
-    print('change done to get a version 2 of function...')
+    # print('Received event ' + json.dumps(event,indent =2))
+    # print('change done to get a version 2 of function...')
 
     #operation=event['operation']
     bodyDict = json.loads(event['body'])
