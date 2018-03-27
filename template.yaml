@@ -13,6 +13,6 @@ Resources:
           Type: Api
           Properties:
             Path: /DynamoDbTableScan
-            Method: GET
+            Method: POST
 
  
