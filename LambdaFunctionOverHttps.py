@@ -15,7 +15,13 @@ def handler(event, context):
     print('Received event ' + json.dumps(event,indent =2))
     print('change done to get a version 2 of function...')
 
-    operation=event['operation']
+    #operation=event['operation']
+    body = json.loads(event['body'])
+
+    for x in body:
+	    print("%s: %d" % (x, body[x]))
+        
+
     dynamo=boto3.resource('dynamodb').Table('lo_students')
     # if 'tableName' in event:
     #     dynamo=boto3.resource('dynamodb').Table('lo_students')
