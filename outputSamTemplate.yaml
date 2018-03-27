@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Outputs the time
+Resources:
+  TimeFunction:
+    Properties:
+      CodeUri: s3://tutux-artifact-bucket/22523f020150921709bf72d8772f79b0
+      Events:
+        MyTimeApi:
+          Properties:
+            Method: POST
+            Path: /DynamoDbTableScan
+          Type: Api
+      Handler: LambdaFunctionOverHttps.handler
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
