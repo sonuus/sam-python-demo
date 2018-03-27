@@ -16,11 +16,11 @@ def handler(event, context):
     print('change done to get a version 2 of function...')
 
     #operation=event['operation']
-    body = json.loads(event['body'])
+    bodyDict = json.loads(event['body'])
+    operation = bodyDict['operation']
 
-    for x in body:
-	    print("%s: %d" % (x, body[x]))
-        
+
+    
 
     dynamo=boto3.resource('dynamodb').Table('lo_students')
     # if 'tableName' in event:
@@ -39,6 +39,10 @@ def handler(event, context):
     }
 
     if operation in operations:
-        return operations[operation] (event.get('payload'))
+       # return operations[operation] (event.get('payload'))
+        return {
+                  "statusCode": 200,
+                  "body": json.dumps(operations[operation] (bodyDict['payload']))
+               } 
     else:
         raise ValueError('Unrecognizied operation "{}"'.format(operation))
